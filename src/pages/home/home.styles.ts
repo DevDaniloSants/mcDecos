@@ -61,6 +61,8 @@ export const Span = styled.span<{
     & svg {
         background-color: transparent;
         fill: ${(props) => (props.$primary ? `${Colors.primary}` : '')};
+        width: 18px;
+        height: 18px;
     }
 
     &.position_end {
