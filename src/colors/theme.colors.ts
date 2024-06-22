@@ -1,0 +1,17 @@
+const Colors = {
+    primary: '#FFB201',
+    text: {
+        white: '#fff',
+        dark: '#000000',
+    },
+    button: {
+        background: 'rgb(255,178,1)',
+        backgroundColor:
+            'linear-gradient(90deg, rgba(255,178,1,1) 0%, rgba(255,149,17,1) 100%)',
+    },
+    span: {
+        background: '#31363E',
+    },
+}
+
+export default Colors

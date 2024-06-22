@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
-    background-color: #1b2029;
     color: #ffff;
 }
 
@@ -16,4 +15,5 @@
 html,
 body {
     height: 100%;
+    background-color: #1b2029;
 }
