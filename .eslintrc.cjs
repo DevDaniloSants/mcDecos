@@ -1,12 +1,13 @@
-import eslintConfigPrettier from 'eslint-config-prettier'
+const { default: eslintPluginPrettier } = require('eslint-plugin-prettier')
 
 module.exports = {
     root: true,
-    env: { browser: true, es2020: true },
+    env: { browser: true, es2020: true, jest: true },
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react-hooks/recommended',
+        'plugin:prettier/recommended',
         'prettier',
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs'],
@@ -17,7 +18,5 @@ module.exports = {
             'warn',
             { allowConstantExport: true },
         ],
-        indent: 'error',
     },
-    eslintConfigPrettier,
 }
