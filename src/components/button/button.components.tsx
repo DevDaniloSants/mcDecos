@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
-import { CustomButton, IconButton } from './button.style'
+import { CustomButton, IconButton } from './button.styles'
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLBodyElement> {
     startIcon?: ReactNode

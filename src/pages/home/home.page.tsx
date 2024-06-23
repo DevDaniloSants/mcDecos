@@ -11,7 +11,7 @@ import {
 } from './home.styles'
 
 import LogoMcDecos from '../../assets/logo_complet.svg'
-import { CustomButton } from '../../components/button/button.style'
+import { CustomButton } from '../../components/button/button.styles'
 
 const HomePage = () => {
     return (
