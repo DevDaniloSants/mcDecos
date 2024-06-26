@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { collection, getDocs } from 'firebase/firestore'
 
 import Category from '../../types/category.types'
@@ -25,17 +25,23 @@ export const fetchCategories = createAsyncThunk(
 export interface InitialState {
     isLoading: boolean
     categories: Category[]
+    filtered: string
 }
 
 const initialState: InitialState = {
     isLoading: false,
     categories: [],
+    filtered: '',
 }
 
 const categorySlice = createSlice({
     name: 'categories',
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        setFiltered(state, action: PayloadAction<string>) {
+            state.filtered = action.payload
+        },
+    },
     extraReducers(builder) {
         builder.addCase(fetchCategories.pending, (state) => {
             state.isLoading = true
@@ -48,5 +54,7 @@ const categorySlice = createSlice({
             })
     },
 })
+
+export const { setFiltered } = categorySlice.actions
 
 export default categorySlice.reducer

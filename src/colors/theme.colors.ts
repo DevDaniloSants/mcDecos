@@ -10,7 +10,7 @@ const Colors = {
             'linear-gradient(90deg, rgba(255,178,1,1) 0%, rgba(255,149,17,1) 100%)',
     },
     span: {
-        background: '#31363E',
+        background: '#222632',
     },
 }
 
