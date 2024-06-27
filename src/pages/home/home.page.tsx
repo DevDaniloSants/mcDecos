@@ -12,8 +12,15 @@ import {
 
 import LogoMcDecos from '../../assets/logo_complet.svg'
 import { CustomButton } from '../../components/button/button.styles'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
+    const navigate = useNavigate()
+
+    const handleCategoryPage = (): void => {
+        navigate('/category')
+    }
+
     return (
         <HomeContainer>
             <HomeContent>
@@ -30,7 +37,9 @@ const HomePage = () => {
                     </Span>
                 </HomeSection>
 
-                <CustomButton>FAÇA O SEU PEDIDO</CustomButton>
+                <CustomButton onClick={() => handleCategoryPage()}>
+                    FAÇA O SEU PEDIDO
+                </CustomButton>
                 <Span className="position_end">
                     <GoHome />
                     Rua Lorem Ipsum - Ipsum Lorem 28 º
