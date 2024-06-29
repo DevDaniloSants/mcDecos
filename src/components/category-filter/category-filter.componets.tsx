@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../hooks/redux.hooks'
-import CategoryItem from '../category-item/category-item.components'
+import ProductItem from '../product-item/product-item.components'
 
 import { Products } from './category-filter.styles'
 
@@ -36,7 +36,7 @@ const CategoryFilter = () => {
                     key={category.id}
                 >
                     {category.products?.map((product) => (
-                        <CategoryItem
+                        <ProductItem
                             key={product.displayName}
                             product={product}
                         />

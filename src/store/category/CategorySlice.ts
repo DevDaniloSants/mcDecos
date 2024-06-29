@@ -46,9 +46,13 @@ const categorySlice = createSlice({
         builder.addCase(fetchCategories.pending, (state) => {
             state.isLoading = true
         }),
-            builder.addCase(fetchCategories.fulfilled, (state, action) => {
-                ;(state.isLoading = false), (state.categories = action.payload)
-            }),
+            builder.addCase(
+                fetchCategories.fulfilled,
+                (state, action: PayloadAction<Category[]>) => {
+                    ;(state.isLoading = false),
+                        (state.categories = action.payload)
+                }
+            ),
             builder.addCase(fetchCategories.rejected, (state) => {
                 state.isLoading = false
             })

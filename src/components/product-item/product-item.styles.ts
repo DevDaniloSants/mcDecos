@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Colors from '../../colors/theme.colors'
 
-export const CategoryItemContainer = styled(motion.div)`
+export const Container = styled(motion.div)`
     display: flex;
     flex-direction: column;
     height: auto;
@@ -12,7 +12,7 @@ export const CategoryItemContainer = styled(motion.div)`
     cursor: pointer;
 `
 
-export const CategoryItemImage = styled.div`
+export const Image = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +40,7 @@ export const CategoryItemImage = styled.div`
     }
 `
 
-export const CategoryItemInfo = styled.div`
+export const Info = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
