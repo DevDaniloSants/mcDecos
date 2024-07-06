@@ -12,6 +12,7 @@ const Colors = {
     span: {
         background: '#222632',
     },
+    background: '#0d1010',
 }
 
 export default Colors
