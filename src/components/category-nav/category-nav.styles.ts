@@ -22,7 +22,6 @@ export const Navigation = styled.div`
 `
 
 export const Title = styled.h6`
-    font-family: 'Roboto Condensed';
     font-size: 14px;
     font-weight: 300;
     padding: 1rem;
