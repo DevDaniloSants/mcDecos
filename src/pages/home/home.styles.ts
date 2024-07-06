@@ -45,7 +45,6 @@ export const Span = styled.span<{
     align-items: center;
     justify-content: space-evenly;
 
-    font-family: 'Roboto Condensed', sans-serif;
     font-size: 14px;
 
     padding: 1rem;

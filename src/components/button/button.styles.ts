@@ -11,7 +11,6 @@ export const CustomButton = styled.button`
     padding: 1rem;
     border: none;
     border-radius: 8px;
-    font-family: 'Roboto Condensed';
     font-weight: 400;
     font-size: 0.9em;
     color: ${Colors.text.dark};
