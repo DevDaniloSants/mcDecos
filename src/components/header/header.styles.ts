@@ -10,7 +10,6 @@ export const HeaderContainer = styled.header`
 export const HeaderTitle = styled.h1`
     font-size: 1em;
     font-weight: 400;
-    font-family: 'Roboto Condensed';
 `
 
 export const HeaderEnd = styled.div`
