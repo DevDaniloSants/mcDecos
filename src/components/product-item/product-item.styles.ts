@@ -5,9 +5,11 @@ import Colors from '../../colors/theme.colors'
 export const Container = styled(motion.div)`
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     height: auto;
     border-radius: 8px;
     background-color: ${Colors.span.background};
+    padding: 1rem;
 
     cursor: pointer;
 `
@@ -19,14 +21,12 @@ export const Image = styled.div`
 
     width: 100%;
     height: 100%;
-    margin: 0 auto;
     border-radius: 8px 8px 0 0;
-    padding-top: 1rem;
 
     & img {
         width: 50%;
         max-width: 160px;
-        height: 70%;
+        height: 160px;
         border-radius: 8px;
         object-fit: cover;
     }
@@ -45,10 +45,7 @@ export const Info = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
     width: 100%;
-
-    padding: 1rem;
 
     & p:nth-child(1) {
         font-weight: 300;
@@ -57,7 +54,7 @@ export const Info = styled.div`
     }
     & p:nth-child(2) {
         font-weight: bold;
-        font-size: clamp(16px, 2vw, 20px);
+        font-size: clamp(22px, 2vw, 32px);
         color: ${Colors.primary};
     }
 `
