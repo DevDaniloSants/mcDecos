@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Colors from '../../colors/theme.colors'
 
 export const CustomButton = styled.button`
+    max-height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
