@@ -19,23 +19,27 @@ export const Content = styled.div`
 `
 
 export const HeaderSection = styled.div`
-    height: 280px;
+    flex: 0 1 220px;
     padding: 0.5rem;
     border-radius: 8px;
     background: url(${image});
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
 
     overflow: hidden;
 
     position: relative;
 
     & img {
+        width: 160px;
         position: absolute;
-        bottom: -15%;
+        bottom: -20%;
         left: 50%;
         transform: translate(-50%, -50%);
         filter: drop-shadow(0 8px 5px rgba(0, 0, 0, 1));
+    }
+
+    @media (max-width: 400px) {
     }
 `
 
@@ -60,90 +64,17 @@ export const Buttons = styled.div`
 `
 
 export const DetailsSection = styled.div`
-    flex: 2;
+    flex: 5;
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
+`
 
-    & .details_start {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    & .details_center {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.2rem;
-        padding: 2rem 0;
-    }
-
-    & .details_end {
-        width: 100%;
-        align-items: center;
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-
-        & .ingredient-item {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: ${Colors.span.background};
-            border-radius: 6px;
-            cursor: pointer;
-
-            position: relative;
-
-            &:hover .tooltiptext {
-                visibility: visible;
-                opacity: 1;
-            }
-
-            & img {
-                width: 80%;
-                height: 80%;
-            }
-
-            & .tooltiptext {
-                visibility: hidden;
-                background-color: ${Colors.primary};
-                color: ${Colors.text.dark};
-                font-family: 'Roboto';
-                font-size: 12px;
-                text-align: center;
-                border-radius: 8px;
-                padding: 5px;
-                position: absolute;
-                z-index: 1;
-                bottom: 120%;
-                left: 130%;
-                margin-left: -80px;
-                opacity: 0;
-                transition: opacity 0.3s;
-                z-index: 10;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    top: 100%;
-                    left: 50%;
-                    margin-left: 0px;
-                    border-width: 5px;
-                    border-style: solid;
-                    border-color: ${Colors.primary} transparent transparent
-                        transparent;
-                }
-            }
-        }
-    }
-
-    @media (max-width: 425px) {
-        & .details_end {
-            justify-content: center;
-        }
-    }
+export const IngredientsText = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    padding: 20px 0;
 `
 
 export const ActionSection = styled.div`

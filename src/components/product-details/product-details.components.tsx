@@ -18,13 +18,15 @@ import {
     Content,
     DetailsSection,
     HeaderSection,
+    IngredientsText,
 } from './product-details.styles'
+import IngredientsCarousel from '../ingredients-carousel/ingredients-carousel.components'
 
 const ProductDetails = () => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState<boolean>(false)
     const [product, setProduct] = useState<Product | null>(null)
 
-    const { id } = useParams()
+    const { id } = useParams<string>()
 
     useEffect(() => {
         const fetchDocument = async () => {
@@ -76,27 +78,15 @@ const ProductDetails = () => {
                     <img src={product?.imageUrl} alt={product?.displayName} />
                 </HeaderSection>
                 <DetailsSection>
-                    <div className="details_start">
-                        <h1>{product?.displayName}</h1>
-                    </div>
-                    <div className="details_center">
-                        {product?.ingredients?.map((ingredient) => (
-                            <p>{ingredient.displayName},</p>
-                        ))}
-                    </div>
-                    <div className="details_end">
-                        {product?.ingredients?.map((ingredient) => (
-                            <div className="ingredient-item">
-                                <img
-                                    src={ingredient.imageUrl}
-                                    alt={ingredient.displayName}
-                                />
-                                <div className="tooltiptext">
-                                    {ingredient.displayName}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <h1>{product?.displayName}</h1>
+
+                    <IngredientsText>
+                        {product?.ingredients
+                            ?.map((ingredient) => ingredient.displayName)
+                            .join(', ')}
+                        .
+                    </IngredientsText>
+                    <IngredientsCarousel product={product!} />
                 </DetailsSection>
                 <ActionSection>
                     <div>
