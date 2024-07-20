@@ -38,14 +38,15 @@ export const CartContent = styled.div`
     text-align: center;
     padding: 0.5rem;
 
-    & .products {
-        flex: 9;
-        display: flex;
-    }
-
     @media (max-width: 768px) {
         min-width: 100%;
     }
+`
+export const Products = styled.div`
+    flex: 9;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 `
 
 export const CloseCartButton = styled.span`
@@ -84,7 +85,7 @@ export const Price = styled.div`
 `
 
 export const PriceTitle = styled.span`
-    color: ${Colors.button.background};
+    color: ${Colors.primary};
     font-size: 12px;
 `
 

@@ -22,7 +22,7 @@ import {
     IngredientsText,
 } from './product-details.styles'
 import IngredientsCarousel from '../ingredients-carousel/ingredients-carousel.components'
-import { toogleCart } from '../../store/cart/CartSlice'
+import { addProduct, toogleCart } from '../../store/cart/CartSlice'
 
 const ProductDetails = () => {
     const [loading, setLoading] = useState<boolean>(false)
@@ -34,10 +34,11 @@ const ProductDetails = () => {
     const { id } = useParams<string>()
 
     const handleIconClick = () => {
-        navigate('/')
+        navigate('/category')
     }
 
     const handleAddToCart = () => {
+        dispatch(addProduct(product!))
         dispatch(toogleCart())
     }
 

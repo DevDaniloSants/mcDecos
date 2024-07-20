@@ -15,12 +15,14 @@ import {
     CloseCartButton,
     Price,
     PriceTitle,
+    Products,
     TotalPrice,
 } from './cart.styles'
 import { IoIosArrowBack } from 'react-icons/io'
+import CartItem from '../cart-item/cart-item.components'
 
 const Cart = () => {
-    const { isVisible } = useAppSelector((state) => state.cartReducer)
+    const { isVisible, products } = useAppSelector((state) => state.cartReducer)
 
     const dispatch = useDispatch()
 
@@ -32,11 +34,15 @@ const Cart = () => {
         <CartContainer $isvisible={isVisible}>
             <CartEscapeArea onClick={handleEscapeClick} />
             <CartContent>
-                <CloseCartButton>
+                <CloseCartButton onClick={handleEscapeClick}>
                     <IoIosArrowBack />
                 </CloseCartButton>
                 <CartTitle>Meu Carrinho</CartTitle>
-                <div className="products">products</div>
+                <Products>
+                    {products.map((product) => (
+                        <CartItem key={product.id} product={product} />
+                    ))}
+                </Products>
                 <Actions>
                     <Price>
                         <PriceTitle>Total</PriceTitle>

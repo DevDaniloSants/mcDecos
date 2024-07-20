@@ -3,6 +3,7 @@ const Colors = {
     text: {
         white: '#fff',
         dark: '#000000',
+        gray: '#848080',
     },
     button: {
         background: 'rgb(255,178,1)',
