@@ -6,6 +6,7 @@ export const Container = styled.div`
     text-align: left;
     gap: 8px;
     padding: 0.5rem;
+    position: relative;
 `
 export const Informations = styled.div`
     display: flex;
@@ -13,6 +14,16 @@ export const Informations = styled.div`
     gap: 6px;
     overflow: hidden;
 `
+
+export const RemoveButton = styled.button`
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    top: 8px;
+    right: 10px;
+    cursor: pointer;
+`
+
 export const Image = styled.img`
     width: 80px;
     height: 80px;
