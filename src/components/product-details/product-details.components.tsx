@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore'
 import { IoIosArrowBack, IoMdHeartEmpty } from 'react-icons/io'
@@ -26,7 +26,12 @@ const ProductDetails = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [product, setProduct] = useState<Product | null>(null)
 
+    const navigate = useNavigate()
     const { id } = useParams<string>()
+
+    const handleIconClick = () => {
+        navigate('/')
+    }
 
     useEffect(() => {
         const fetchDocument = async () => {
@@ -68,7 +73,7 @@ const ProductDetails = () => {
             <Content>
                 <HeaderSection>
                     <Buttons>
-                        <button>
+                        <button onClick={handleIconClick}>
                             <IoIosArrowBack />
                         </button>
                         <button>
@@ -90,11 +95,11 @@ const ProductDetails = () => {
                 </DetailsSection>
                 <ActionSection>
                     <div>
-                        <p>preço</p>
+                        <p>Preço</p>
                         <p>R${product?.price}</p>
                     </div>
                     <Button startIcon={<MdOutlineAddShoppingCart />}>
-                        adicionar ao carrinho
+                        Adicionar ao carrinho
                     </Button>
                 </ActionSection>
             </Content>

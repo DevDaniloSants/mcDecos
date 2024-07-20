@@ -55,6 +55,7 @@ export const Buttons = styled.div`
         border: none;
         background-color: ${Colors.span.background};
         border-radius: 6px;
+        cursor: pointer;
 
         & svg {
             width: 18px;
