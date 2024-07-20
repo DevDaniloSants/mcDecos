@@ -1,4 +1,10 @@
 import { MdDone } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+
+import { useAppSelector } from '../../hooks/redux.hooks'
+import { toogleCart } from '../../store/cart/CartSlice'
+
+import Button from '../button/button.components'
 
 import {
     Actions,
@@ -6,25 +12,29 @@ import {
     CartContent,
     CartEscapeArea,
     CartTitle,
+    CloseCartButton,
     Price,
     PriceTitle,
     TotalPrice,
 } from './cart.styles'
-import Button from '../button/button.components'
-import { useAppSelector } from '../../hooks/redux.hooks'
-import { useEffect } from 'react'
+import { IoIosArrowBack } from 'react-icons/io'
 
 const Cart = () => {
     const { isVisible } = useAppSelector((state) => state.cartReducer)
 
-    useEffect(() => {
-        console.log(isVisible)
-    }, [isVisible])
+    const dispatch = useDispatch()
+
+    const handleEscapeClick = () => {
+        dispatch(toogleCart())
+    }
 
     return (
-        <CartContainer isVisible={isVisible}>
-            <CartEscapeArea />
+        <CartContainer $isvisible={isVisible}>
+            <CartEscapeArea onClick={handleEscapeClick} />
             <CartContent>
+                <CloseCartButton>
+                    <IoIosArrowBack />
+                </CloseCartButton>
                 <CartTitle>Meu Carrinho</CartTitle>
                 <div className="products">products</div>
                 <Actions>

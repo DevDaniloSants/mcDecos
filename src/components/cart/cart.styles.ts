@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Colors from '../../colors/theme.colors'
 
 interface CartContainerProps {
-    isVisible: boolean
+    $isvisible: boolean
 }
 
 export const CartContainer = styled.div<CartContainerProps>`
@@ -15,18 +15,22 @@ export const CartContainer = styled.div<CartContainerProps>`
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: flex-end;
-    visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
-    opacity: ${(props) => (props.isVisible ? '1' : '0')};
+    visibility: ${(props) => (props.$isvisible ? 'visible' : 'hidden')};
+    opacity: ${(props) => (props.$isvisible ? '1' : '0')};
     transition:
         visibility 0.3s,
         opacity 0.3s;
 `
 
-export const CartEscapeArea = styled.div``
+export const CartEscapeArea = styled.div`
+    width: 100%;
+`
 
 export const CartContent = styled.div`
-    width: 100%;
-    max-width: 400px;
+    height: 100%;
+    min-width: 500px;
+    z-index: 200;
+    overflow-y: scroll;
     background-color: ${Colors.span.background};
     position: relative;
     display: flex;
@@ -37,7 +41,21 @@ export const CartContent = styled.div`
     & .products {
         flex: 9;
         display: flex;
-        background-color: black;
+    }
+
+    @media (max-width: 768px) {
+        min-width: 100%;
+    }
+`
+
+export const CloseCartButton = styled.span`
+    position: absolute;
+    top: 28px;
+    left: 8px;
+    visibility: hidden;
+
+    @media (max-width: 768px) {
+        visibility: visible;
     }
 `
 
