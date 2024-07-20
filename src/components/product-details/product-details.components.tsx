@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore'
 import { IoIosArrowBack, IoMdHeartEmpty } from 'react-icons/io'
 import { MdOutlineAddShoppingCart } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
 
 import { db } from '../../config/firebase.config'
 import { categoryConverter } from '../../converters/firestore.converters'
@@ -21,16 +22,23 @@ import {
     IngredientsText,
 } from './product-details.styles'
 import IngredientsCarousel from '../ingredients-carousel/ingredients-carousel.components'
+import { toogleCart } from '../../store/cart/CartSlice'
 
 const ProductDetails = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [product, setProduct] = useState<Product | null>(null)
+
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
     const { id } = useParams<string>()
 
     const handleIconClick = () => {
         navigate('/')
+    }
+
+    const handleAddToCart = () => {
+        dispatch(toogleCart())
     }
 
     useEffect(() => {
@@ -98,7 +106,10 @@ const ProductDetails = () => {
                         <p>Preço</p>
                         <p>R${product?.price}</p>
                     </div>
-                    <Button startIcon={<MdOutlineAddShoppingCart />}>
+                    <Button
+                        startIcon={<MdOutlineAddShoppingCart />}
+                        onClick={handleAddToCart}
+                    >
                         Adicionar ao carrinho
                     </Button>
                 </ActionSection>
