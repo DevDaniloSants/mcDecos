@@ -2,13 +2,13 @@ import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
 import { CustomButton, IconButton } from './button.styles'
 
-interface IButtonProps extends ButtonHTMLAttributes<HTMLBodyElement> {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     startIcon?: ReactNode
 }
 
-const Button: React.FC<IButtonProps> = ({ startIcon, children }) => {
+const Button: React.FC<IButtonProps> = ({ startIcon, children, ...rest }) => {
     return (
-        <CustomButton>
+        <CustomButton {...rest}>
             {startIcon && <IconButton>{startIcon}</IconButton>}
             {children}
         </CustomButton>
