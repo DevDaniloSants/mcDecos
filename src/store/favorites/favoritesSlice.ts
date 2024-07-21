@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import Favorites from '../../types/favoriteProducts.types'
 import { RootState } from '../store'
+import Product from '../../types/product.types'
 
 export interface InitialState {
     isLoading: boolean
-    favorites: Favorites[]
+    favorites: Product[]
 }
 
 const initialState: InitialState = {
@@ -16,7 +16,7 @@ const favoritesSlice = createSlice({
     name: 'favotires',
     initialState: initialState,
     reducers: {
-        addFavotires(state, action: PayloadAction<Favorites>) {
+        addFavotires(state, action: PayloadAction<Product>) {
             const product = action.payload
 
             const productIsAreadyInFavorites = state.favorites.some(
@@ -31,10 +31,7 @@ const favoritesSlice = createSlice({
                 return
             }
 
-            state.favorites = [
-                ...state.favorites,
-                { ...product, favorite: true },
-            ]
+            state.favorites = [...state.favorites, product]
         },
     },
 })
