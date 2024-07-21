@@ -1,14 +1,13 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore'
-import { IoIosArrowBack, IoMdHeartEmpty, IoMdHeart } from 'react-icons/io'
+import { IoIosArrowBack } from 'react-icons/io'
 import { MdOutlineAddShoppingCart } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 
 import { db } from '../../config/firebase.config'
 import { categoryConverter } from '../../converters/firestore.converters'
 import { addProduct, toggleCart } from '../../store/cart/CartSlice'
-import { addFavotires } from '../../store/favorites/favoritesSlice'
 import Product from '../../types/product.types'
 
 import Loading from '../loading/loading.components'
@@ -24,21 +23,16 @@ import {
     HeaderSection,
     IngredientsText,
 } from './product-details.styles'
-import { useAppSelector } from '../../hooks/redux.hooks'
+import FavoriteButton from '../favoriteButton/favoriteButton.components'
 
 const ProductDetails = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [product, setProduct] = useState<Product | null>(null)
 
     const dispatch = useDispatch()
-    const { favorites } = useAppSelector((state) => state.favoritesReducer)
 
     const navigate = useNavigate()
     const { id } = useParams<string>()
-
-    const productIsAlreadyFavorite = favorites.some(
-        (item) => item.id === product?.id
-    )
 
     const handleIconClick = () => {
         navigate('/category')
@@ -47,10 +41,6 @@ const ProductDetails = () => {
     const handleAddToCart = () => {
         dispatch(addProduct(product!))
         dispatch(toggleCart())
-    }
-
-    const handleAddToFavotires = () => {
-        dispatch(addFavotires(product!))
     }
 
     useEffect(() => {
@@ -96,13 +86,7 @@ const ProductDetails = () => {
                         <button onClick={handleIconClick}>
                             <IoIosArrowBack />
                         </button>
-                        <button onClick={handleAddToFavotires}>
-                            {productIsAlreadyFavorite ? (
-                                <IoMdHeart />
-                            ) : (
-                                <IoMdHeartEmpty />
-                            )}
-                        </button>
+                        <FavoriteButton product={product!} />
                     </Buttons>
                     <img src={product?.imageUrl} alt={product?.displayName} />
                 </HeaderSection>
