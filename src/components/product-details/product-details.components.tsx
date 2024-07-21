@@ -1,16 +1,19 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore'
-import { IoIosArrowBack, IoMdHeartEmpty } from 'react-icons/io'
+import { IoIosArrowBack, IoMdHeartEmpty, IoMdHeart } from 'react-icons/io'
 import { MdOutlineAddShoppingCart } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 
 import { db } from '../../config/firebase.config'
 import { categoryConverter } from '../../converters/firestore.converters'
+import { addProduct, toggleCart } from '../../store/cart/CartSlice'
+import { addFavotires } from '../../store/favorites/favoritesSlice'
 import Product from '../../types/product.types'
 
 import Loading from '../loading/loading.components'
 import Button from '../button/button.components'
+import IngredientsCarousel from '../ingredients-carousel/ingredients-carousel.components'
 
 import {
     ActionSection,
@@ -21,17 +24,21 @@ import {
     HeaderSection,
     IngredientsText,
 } from './product-details.styles'
-import IngredientsCarousel from '../ingredients-carousel/ingredients-carousel.components'
-import { addProduct, toggleCart } from '../../store/cart/CartSlice'
+import { useAppSelector } from '../../hooks/redux.hooks'
 
 const ProductDetails = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [product, setProduct] = useState<Product | null>(null)
 
     const dispatch = useDispatch()
+    const { favorites } = useAppSelector((state) => state.favoritesReducer)
 
     const navigate = useNavigate()
     const { id } = useParams<string>()
+
+    const productIsAlreadyFavorite = favorites.some(
+        (item) => item.id === product?.id
+    )
 
     const handleIconClick = () => {
         navigate('/category')
@@ -40,6 +47,10 @@ const ProductDetails = () => {
     const handleAddToCart = () => {
         dispatch(addProduct(product!))
         dispatch(toggleCart())
+    }
+
+    const handleAddToFavotires = () => {
+        dispatch(addFavotires(product!))
     }
 
     useEffect(() => {
@@ -85,8 +96,12 @@ const ProductDetails = () => {
                         <button onClick={handleIconClick}>
                             <IoIosArrowBack />
                         </button>
-                        <button>
-                            <IoMdHeartEmpty />
+                        <button onClick={handleAddToFavotires}>
+                            {productIsAlreadyFavorite ? (
+                                <IoMdHeart />
+                            ) : (
+                                <IoMdHeartEmpty />
+                            )}
                         </button>
                     </Buttons>
                     <img src={product?.imageUrl} alt={product?.displayName} />

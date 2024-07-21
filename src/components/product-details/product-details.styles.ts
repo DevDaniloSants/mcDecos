@@ -64,6 +64,10 @@ export const Buttons = styled.div`
     }
 `
 
+export const FavoriteButton = styled.button``
+
+export const BackButton = styled.button``
+
 export const DetailsSection = styled.div`
     flex: 5;
     display: flex;
