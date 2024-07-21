@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import CartProducts from '../../types/cartProducts.types'
 import Product from '../../types/product.types'
+import { RootState } from '../store'
 
 export interface InitialState {
     isVisible: boolean
@@ -66,6 +67,12 @@ export const cartSlice = createSlice({
         },
     },
 })
+
+export const selectProductTotalPrice = (state: RootState) => {
+    return state.cartReducer.products.reduce((acc, currentValue) => {
+        return acc + currentValue.price * currentValue.quantity
+    }, 0)
+}
 
 export const {
     toggleCart,

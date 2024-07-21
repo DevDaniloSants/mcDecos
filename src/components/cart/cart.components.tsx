@@ -2,7 +2,7 @@ import { MdDone } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 
 import { useAppSelector } from '../../hooks/redux.hooks'
-import { toggleCart } from '../../store/cart/CartSlice'
+import { selectProductTotalPrice, toggleCart } from '../../store/cart/CartSlice'
 
 import Button from '../button/button.components'
 
@@ -23,6 +23,7 @@ import CartItem from '../cart-item/cart-item.components'
 
 const Cart = () => {
     const { isVisible, products } = useAppSelector((state) => state.cartReducer)
+    const productTotalPrice = useAppSelector(selectProductTotalPrice)
 
     const dispatch = useDispatch()
 
@@ -46,7 +47,7 @@ const Cart = () => {
                 <Actions>
                     <Price>
                         <PriceTitle>Total</PriceTitle>
-                        <TotalPrice>R$ 1000</TotalPrice>
+                        <TotalPrice>R$ {productTotalPrice}</TotalPrice>
                     </Price>
                     <Button startIcon={<MdDone />}>Finalizar pedido</Button>
                 </Actions>
