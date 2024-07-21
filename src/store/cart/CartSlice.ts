@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        toogleCart(state) {
+        toggleCart(state) {
             state.isVisible = !state.isVisible
         },
         addProduct(state, action: PayloadAction<Product>) {
@@ -47,6 +47,6 @@ export const cartSlice = createSlice({
     },
 })
 
-export const { toogleCart, addProduct, removeProduct } = cartSlice.actions
+export const { toggleCart, addProduct, removeProduct } = cartSlice.actions
 
 export default cartSlice.reducer

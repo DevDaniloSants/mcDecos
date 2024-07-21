@@ -50,8 +50,6 @@ export const Button = styled.button`
 
     transition: filter ease 0.5s;
 
-    z-index: 2;
-
     cursor: pointer;
 
     transition: color ease 0.5s;

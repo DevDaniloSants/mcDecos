@@ -2,7 +2,7 @@ import { MdDone } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 
 import { useAppSelector } from '../../hooks/redux.hooks'
-import { toogleCart } from '../../store/cart/CartSlice'
+import { toggleCart } from '../../store/cart/CartSlice'
 
 import Button from '../button/button.components'
 
@@ -27,7 +27,7 @@ const Cart = () => {
     const dispatch = useDispatch()
 
     const handleEscapeClick = () => {
-        dispatch(toogleCart())
+        dispatch(toggleCart())
     }
 
     return (

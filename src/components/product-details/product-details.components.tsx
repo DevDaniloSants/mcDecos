@@ -22,7 +22,7 @@ import {
     IngredientsText,
 } from './product-details.styles'
 import IngredientsCarousel from '../ingredients-carousel/ingredients-carousel.components'
-import { addProduct, toogleCart } from '../../store/cart/CartSlice'
+import { addProduct, toggleCart } from '../../store/cart/CartSlice'
 
 const ProductDetails = () => {
     const [loading, setLoading] = useState<boolean>(false)
@@ -39,7 +39,7 @@ const ProductDetails = () => {
 
     const handleAddToCart = () => {
         dispatch(addProduct(product!))
-        dispatch(toogleCart())
+        dispatch(toggleCart())
     }
 
     useEffect(() => {
