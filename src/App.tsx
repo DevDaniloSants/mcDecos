@@ -4,6 +4,7 @@ import HomePage from './pages/home/home.page'
 import RootLayout from './pages/RootLayout'
 import CategoryPage from './pages/category/category.page'
 import ProductPage from './pages/product/product.page'
+import FavoritesPage from './pages/favorites/favorites.page'
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <ProductPage />,
+            },
+            {
+                path: '/favorites',
+                element: <FavoritesPage />,
             },
         ],
     },

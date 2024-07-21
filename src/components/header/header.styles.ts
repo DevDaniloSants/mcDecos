@@ -11,6 +11,7 @@ export const HeaderContainer = styled.header`
 export const HeaderTitle = styled.h1`
     font-size: 1em;
     font-weight: 400;
+    cursor: pointer;
 `
 
 export const HeaderEnd = styled.div`
@@ -29,7 +30,20 @@ export const CartButton = styled.div`
     position: relative;
     & span {
         position: absolute;
-        font-size: 12px;
+        font-size: 14px;
+        top: 0;
+        color: ${Colors.primary};
+        padding-left: 4px;
+    }
+`
+
+export const FavoriteButton = styled.div`
+    cursor: pointer;
+    position: relative;
+    & span {
+        position: absolute;
+        font-size: 14px;
+        padding-left: 4px;
         top: 0;
         color: ${Colors.primary};
     }
