@@ -78,6 +78,10 @@ export const Actions = styled.div`
     & button {
         flex: 1;
     }
+
+    @media (max-width: 425px) {
+        padding: 0;
+    }
 `
 
 export const Price = styled.div`
