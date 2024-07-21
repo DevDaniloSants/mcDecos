@@ -40,5 +40,9 @@ export const Texts = styled.div`
 `
 
 export const Title = styled.h1`
-    font-size: clamp(78px, 10vw, 100px);
+    font-size: clamp(36px, 5vw, 78px);
+`
+
+export const Span = styled.span`
+    font-size: clamp(10px, 4vw, 16px);
 `

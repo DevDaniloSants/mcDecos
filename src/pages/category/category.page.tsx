@@ -8,6 +8,7 @@ import { Container, Content } from './category.styles'
 import CategoryNavigation from '../../components/category-nav/category-nav.components'
 import CategoryFilter from '../../components/category-filter/category-filter.componets'
 import Loading from '../../components/loading/loading.components'
+import CustomBanner from '../../components/customBanner/customBanner.component'
 
 const CategoryPage = () => {
     const dispatch = useDispatch()
@@ -27,6 +28,10 @@ const CategoryPage = () => {
     return (
         <Container>
             <Content>
+                <CustomBanner
+                    span="Encontre os melhores lanches para você"
+                    title="Lanches & Bebidas"
+                />
                 <CategoryNavigation />
                 <CategoryFilter />
             </Content>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import image from '../../assets/banner.png'
-import { Container, Texts, Title } from './customBanner.styles'
+import { Container, Span, Texts, Title } from './customBanner.styles'
 
 interface CustomBannerProps {
     title: string
@@ -13,7 +13,7 @@ const CustomBanner: React.FC<CustomBannerProps> = ({ title, span }) => {
         <Container $background={image}>
             <Texts>
                 <Title>{title}</Title>
-                <span>{span}</span>
+                <Span>{span}</Span>
             </Texts>
         </Container>
     )
