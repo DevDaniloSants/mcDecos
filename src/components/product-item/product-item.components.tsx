@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 
 import Product from '../../types/product.types'
-import { Container, Image, Info } from './product-item.styles'
+import { Container, Content, Image, Info } from './product-item.styles'
+import FavoriteButton from '../favoriteButton/favoriteButton.components'
 
 interface ProductItemProps {
     product: Product
@@ -23,17 +24,17 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     }
 
     return (
-        <Container
-            variants={framerMotionVariants}
-            onClick={() => handleProductId(product.id)}
-        >
-            <Image>
-                <img src={product.imageUrl} alt={product.displayName} />
-            </Image>
-            <Info>
-                <p>{product.displayName}</p>
-                <p>R${product.price}</p>
-            </Info>
+        <Container variants={framerMotionVariants}>
+            <FavoriteButton product={product} />
+            <Content onClick={() => handleProductId(product.id)}>
+                <Image>
+                    <img src={product.imageUrl} alt={product.displayName} />
+                </Image>
+                <Info>
+                    <p>{product.displayName}</p>
+                    <p>R${product.price}</p>
+                </Info>
+            </Content>
         </Container>
     )
 }

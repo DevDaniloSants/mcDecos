@@ -3,15 +3,26 @@ import { motion } from 'framer-motion'
 import Colors from '../../colors/theme.colors'
 
 export const Container = styled(motion.div)`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
     height: auto;
     border-radius: 8px;
     background-color: ${Colors.span.background};
     padding: 1rem;
+    position: relative;
 
+    & button {
+        background-color: ${Colors.background};
+        position: absolute;
+        right: 20px;
+    }
+`
+
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     cursor: pointer;
+    border-radius: 20px;
+    padding: 1rem;
 `
 
 export const Image = styled.div`
