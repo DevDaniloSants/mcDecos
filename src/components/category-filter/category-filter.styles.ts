@@ -11,7 +11,7 @@ export const Products = styled(motion.div)`
     padding-bottom: 14px;
 
     @media (max-width: 647px) {
-        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        grid-template-columns: 1fr;
         grid-gap: 4px;
         padding-bottom: 4px;
     }

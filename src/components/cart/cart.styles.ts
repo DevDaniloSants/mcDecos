@@ -30,7 +30,6 @@ export const CartContent = styled.div`
     height: 100%;
     min-width: 500px;
     z-index: 200;
-    overflow-y: scroll;
     background-color: ${Colors.span.background};
     position: relative;
     display: flex;
@@ -45,6 +44,9 @@ export const CartContent = styled.div`
 export const Products = styled.div`
     flex: 9;
     display: flex;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #888886 #1f1f1f;
     flex-direction: column;
     gap: 1rem;
 `

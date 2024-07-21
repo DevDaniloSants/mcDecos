@@ -25,13 +25,13 @@ export const Image = styled.div`
 
     & img {
         width: 50%;
-        max-width: 160px;
-        height: 160px;
+        max-width: 100px;
+        max-height: 100px;
         border-radius: 8px;
         object-fit: cover;
     }
 
-    @media (max-width: 647px) {
+    @media (max-width: 425px) {
         & img {
             width: 60%;
             height: 100%;
