@@ -13,12 +13,14 @@ import {
     HeaderTitle,
 } from './header.styles'
 import { useNavigate } from 'react-router-dom'
+import { selectFavoritesTotal } from '../../store/favorites/favoritesSlice'
 
 const Header = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const productsTotalQuantity = useAppSelector(selectProductsQuantity)
+    const favoritesTotalQuantity = useAppSelector(selectFavoritesTotal)
 
     const handleCartToggle = () => {
         dispatch(toggleCart())
@@ -40,7 +42,7 @@ const Header = () => {
             <HeaderEnd>
                 <FavoriteButton onClick={handleNavigateToFavorites}>
                     <FaHeart />
-                    <span>0</span>
+                    <span>{favoritesTotalQuantity}</span>
                 </FavoriteButton>
                 <CartButton onClick={handleCartToggle}>
                     <MdOutlineShoppingCart />
