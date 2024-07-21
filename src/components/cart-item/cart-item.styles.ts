@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Colors from '../../colors/theme.colors'
 
 export const Container = styled.div`
+    width: 100%;
     display: flex;
     text-align: left;
     gap: 8px;
@@ -9,6 +10,7 @@ export const Container = styled.div`
     position: relative;
 `
 export const Informations = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -22,6 +24,10 @@ export const RemoveButton = styled.button`
     top: 8px;
     right: 10px;
     cursor: pointer;
+
+    & svg {
+        fill: ${Colors.text.gray};
+    }
 `
 
 export const Image = styled.img`
@@ -48,9 +54,18 @@ export const IngredientsText = styled.div`
 `
 export const Actions = styled.div`
     flex: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 
 export const Price = styled.span`
     display: flex;
     gap: 4px;
+`
+
+export const Quantity = styled.div`
+    display: flex;
+    gap: 10px;
 `
