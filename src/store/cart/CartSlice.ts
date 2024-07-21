@@ -74,6 +74,12 @@ export const selectProductTotalPrice = (state: RootState) => {
     }, 0)
 }
 
+export const selectProductsQuantity = (state: RootState) => {
+    return state.cartReducer.products.reduce((acc, currentProduct) => {
+        return acc + currentProduct.quantity
+    }, 0)
+}
+
 export const {
     toggleCart,
     addProduct,

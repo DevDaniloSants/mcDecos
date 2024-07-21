@@ -1,12 +1,22 @@
 import { FaHeart } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
 import { MdOutlineShoppingCart } from 'react-icons/md'
 
-import { HeaderContainer, HeaderEnd, HeaderTitle } from './header.styles'
-import { useDispatch } from 'react-redux'
-import { toggleCart } from '../../store/cart/CartSlice'
+import { selectProductsQuantity, toggleCart } from '../../store/cart/CartSlice'
+import { useAppSelector } from '../../hooks/redux.hooks'
+
+import {
+    CartButton,
+    HeaderContainer,
+    HeaderEnd,
+    HeaderTitle,
+} from './header.styles'
 
 const Header = () => {
     const dispatch = useDispatch()
+
+    const productsTotalQuantity = useAppSelector(selectProductsQuantity)
+
     const handleCartToggle = () => {
         dispatch(toggleCart())
     }
@@ -15,7 +25,10 @@ const Header = () => {
             <HeaderTitle>MC DECO'S</HeaderTitle>
             <HeaderEnd>
                 <FaHeart />
-                <MdOutlineShoppingCart onClick={handleCartToggle} />
+                <CartButton onClick={handleCartToggle}>
+                    <MdOutlineShoppingCart />
+                    <span>{productsTotalQuantity}</span>
+                </CartButton>
             </HeaderEnd>
         </HeaderContainer>
     )
