@@ -1,10 +1,12 @@
 import { MdDone } from 'react-icons/md'
+import { IoIosArrowBack } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 
 import { useAppSelector } from '../../hooks/redux.hooks'
 import { selectProductTotalPrice, toggleCart } from '../../store/cart/CartSlice'
 
 import Button from '../button/button.components'
+import CartItem from '../cart-item/cart-item.components'
 
 import {
     Actions,
@@ -18,8 +20,6 @@ import {
     Products,
     TotalPrice,
 } from './cart.styles'
-import { IoIosArrowBack } from 'react-icons/io'
-import CartItem from '../cart-item/cart-item.components'
 
 const Cart = () => {
     const { isVisible, products } = useAppSelector((state) => state.cartReducer)
@@ -39,11 +39,17 @@ const Cart = () => {
                     <IoIosArrowBack />
                 </CloseCartButton>
                 <CartTitle>Meu Carrinho</CartTitle>
-                <Products>
-                    {products.map((product) => (
-                        <CartItem key={product.id} product={product} />
-                    ))}
-                </Products>
+                {products.length > 0 ? (
+                    <Products>
+                        {products.map((product) => (
+                            <CartItem key={product.id} product={product} />
+                        ))}
+                    </Products>
+                ) : (
+                    <Products>
+                        <span>O Carrinho está vazio</span>
+                    </Products>
+                )}
                 <Actions>
                     <Price>
                         <PriceTitle>Total</PriceTitle>

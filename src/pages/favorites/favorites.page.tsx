@@ -1,5 +1,5 @@
 import CustomBanner from '../../components/customBanner/customBanner.component'
-import Favorites from '../../components/favotires/favorites.component'
+import Favorites from '../../components/favorites/favorites.components'
 
 import { Container, Content } from './favorites.styles'
 
