@@ -15,7 +15,7 @@ export const Container = styled.div`
         top: 50px;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.4em;
+        font-size: clamp(14px, 2vw, 18px);
     }
 
     @media (max-width: 647px) {
