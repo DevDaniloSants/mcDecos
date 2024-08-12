@@ -8,7 +8,7 @@ import { Container, Content } from './category.styles'
 import CategoryNavigation from '../../components/category-nav/category-nav.components'
 import CategoryFilter from '../../components/category-filter/category-filter.componets'
 import Loading from '../../components/loading/loading.components'
-import CustomBanner from '../../components/customBanner/customBanner.component'
+import CustomBanner from '../../components/customBanner/customBanner.components'
 
 const CategoryPage = () => {
     const dispatch = useDispatch()
