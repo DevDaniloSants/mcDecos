@@ -97,7 +97,7 @@ const ProductDetails = () => {
                         {product?.ingredients
                             ?.map((ingredient) => ingredient.displayName)
                             .join(', ')}
-                        .
+                        {product?.ingredients && <span>.</span>}
                     </IngredientsText>
                     <IngredientsCarousel product={product!} />
                 </DetailsSection>

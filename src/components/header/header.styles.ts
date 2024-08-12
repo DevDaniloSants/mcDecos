@@ -16,7 +16,7 @@ export const HeaderTitle = styled.h1`
 
 export const HeaderEnd = styled.div`
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 
     & svg {
         width: 18px;
