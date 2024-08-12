@@ -10,6 +10,7 @@ const Favorites = () => {
             {favorites.map((product) => (
                 <ProductItem key={product.displayName} product={product} />
             ))}
+            {favorites.length <= 0 && <span>Você não possui favoritos</span>}
         </Container>
     )
 }

@@ -9,7 +9,7 @@ const FavoritesPage = () => {
             <Content>
                 <CustomBanner
                     title="Favoritos"
-                    span="área destinada a favoritos"
+                    span="Encontre os seus lanches favoritos aqui!"
                 />
                 <Favorites />
             </Content>
