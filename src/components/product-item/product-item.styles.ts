@@ -12,7 +12,7 @@ export const Container = styled(motion.div)`
     & button {
         background-color: ${Colors.background};
         position: absolute;
-        right: 20px;
+        right: 16px;
     }
 `
 
