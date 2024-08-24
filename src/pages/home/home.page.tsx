@@ -9,8 +9,12 @@ import { Container, Content, Logo, Section, Span } from './home.styles'
 
 import { CustomButton } from '../../components/button/button.styles'
 
+import isRestaurantOpenHelper from '../../helpers/isRestaurantOpenHelper'
+
 const HomePage = () => {
     const navigate = useNavigate()
+
+    const isOpen = isRestaurantOpenHelper()
 
     const handleCategoryPage = (): void => {
         navigate('/category')
@@ -19,23 +23,26 @@ const HomePage = () => {
     return (
         <Container>
             <Content>
-                <Logo src={LogoMcDecos} alt="Mc Decos Logo" />
+                <Logo src={LogoMcDecos} alt="Mc Decos Logo" $isOpen={isOpen} />
 
                 <Section>
-                    <Span>
+                    <Span $isOpen={isOpen}>
                         <PiClockCountdownBold />
                         20 - 30 min
                     </Span>
-                    <Span $primary>
+                    <Span $isOpen={isOpen} $primary>
                         <MdOutlineLunchDining />
-                        Loja Aberta
+                        {isOpen ? 'Loja Aberta' : 'Loja Fechada'}
                     </Span>
                 </Section>
 
-                <CustomButton onClick={() => handleCategoryPage()}>
+                <CustomButton
+                    onClick={() => handleCategoryPage()}
+                    $isOpen={isOpen}
+                >
                     FAÇA O SEU PEDIDO
                 </CustomButton>
-                <Span className="position_end">
+                <Span className="position_end" $isOpen={isOpen}>
                     <GoHome />
                     Rua Lorem Ipsum - Ipsum Lorem 28 º
                 </Span>

@@ -1,14 +1,21 @@
 import styled from 'styled-components'
 import Colors from '../../colors/theme.colors'
+import { HomeProps } from '../../pages/home/home.styles'
 
-export const CustomButton = styled.button`
+export const CustomButton = styled.button<HomeProps>`
     max-height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    background: ${Colors.button.background};
-    background: ${Colors.button.backgroundColor};
+    background: ${(props) =>
+        props.$isOpen
+            ? `${Colors.button.background}`
+            : 'rgba(253, 176, 0, 0.6)'};
+    background: ${(props) =>
+        props.$isOpen
+            ? `${Colors.button.backgroundColor}`
+            : 'rgba(253, 176, 0, 0.6)'};
     padding: 1rem;
     border: none;
     border-radius: 8px;

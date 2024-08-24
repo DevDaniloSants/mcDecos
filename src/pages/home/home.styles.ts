@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 import Colors from '../../colors/theme.colors'
 
+export interface HomeProps {
+    $isOpen: boolean
+    $primary?: boolean
+}
+
 export const Container = styled.div`
     width: 100%;
     height: 100%;
@@ -31,15 +36,15 @@ export const Section = styled.section`
     }
 `
 
-export const Logo = styled.img`
+export const Logo = styled.img<HomeProps>`
     width: 100%;
     height: 300px;
     margin-bottom: 20px;
+
+    filter: ${(props) => (props.$isOpen ? 'none' : 'grayscale(100%)')};
 `
 
-export const Span = styled.span<{
-    $primary?: boolean
-}>`
+export const Span = styled.span<HomeProps>`
     width: 100%;
     display: flex;
     align-items: center;
@@ -55,12 +60,15 @@ export const Span = styled.span<{
     background-color: ${(props) =>
         props.$primary ? 'none' : `${Colors.span.background}`};
     border: ${(props) =>
-        props.$primary ? `1px solid ${Colors.primary}` : 'none'};
+        props.$primary
+            ? `1px solid ${props.$isOpen ? Colors.primary : 'rgba(253, 176, 0, 0.6)'}`
+            : 'none'};
     color: ${Colors.text.white};
 
     & svg {
         background-color: transparent;
-        fill: ${(props) => (props.$primary ? `${Colors.primary}` : '')};
+        fill: ${(props) =>
+            props.$primary ? `${props.$isOpen ? Colors.primary : '#fff'}` : ''};
         width: 18px;
         height: 18px;
     }
