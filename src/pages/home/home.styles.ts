@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Colors from '../../colors/theme.colors'
 
-export const HomeContainer = styled.div`
+export const Container = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
@@ -9,7 +9,7 @@ export const HomeContainer = styled.div`
     padding: 1rem;
 `
 
-export const HomeContent = styled.div`
+export const Content = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@ export const HomeContent = styled.div`
     width: 320px;
 `
 
-export const HomeSection = styled.section`
+export const Section = styled.section`
     display: flex;
     gap: 0.4rem;
 
@@ -31,7 +31,7 @@ export const HomeSection = styled.section`
     }
 `
 
-export const HomeLogo = styled.img`
+export const Logo = styled.img`
     width: 100%;
     height: 300px;
     margin-bottom: 20px;
@@ -46,6 +46,7 @@ export const Span = styled.span<{
     justify-content: space-evenly;
 
     font-size: 14px;
+    text-transform: uppercase;
 
     padding: 1rem;
     margin-bottom: 0.5rem;

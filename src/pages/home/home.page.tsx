@@ -1,18 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import { PiClockCountdownBold } from 'react-icons/pi'
 import { MdOutlineLunchDining } from 'react-icons/md'
 import { GoHome } from 'react-icons/go'
 
-import {
-    HomeContainer,
-    HomeContent,
-    HomeLogo,
-    HomeSection,
-    Span,
-} from './home.styles'
-
 import LogoMcDecos from '../../assets/logo_complet.svg'
+
+import { Container, Content, Logo, Section, Span } from './home.styles'
+
 import { CustomButton } from '../../components/button/button.styles'
-import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -22,20 +17,20 @@ const HomePage = () => {
     }
 
     return (
-        <HomeContainer>
-            <HomeContent>
-                <HomeLogo src={LogoMcDecos} alt="Mc Decos Logo" />
+        <Container>
+            <Content>
+                <Logo src={LogoMcDecos} alt="Mc Decos Logo" />
 
-                <HomeSection>
+                <Section>
                     <Span>
                         <PiClockCountdownBold />
                         20 - 30 min
                     </Span>
                     <Span $primary>
                         <MdOutlineLunchDining />
-                        LOJA ABERTA
+                        Loja Aberta
                     </Span>
-                </HomeSection>
+                </Section>
 
                 <CustomButton onClick={() => handleCategoryPage()}>
                     FAÇA O SEU PEDIDO
@@ -44,8 +39,8 @@ const HomePage = () => {
                     <GoHome />
                     Rua Lorem Ipsum - Ipsum Lorem 28 º
                 </Span>
-            </HomeContent>
-        </HomeContainer>
+            </Content>
+        </Container>
     )
 }
 
