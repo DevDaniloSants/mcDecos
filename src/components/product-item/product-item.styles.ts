@@ -6,7 +6,7 @@ export const Container = styled(motion.div)`
     height: auto;
     border-radius: 8px;
     background-color: ${Colors.span.background};
-    padding: 1rem;
+    padding: 0.8rem;
     position: relative;
 
     & button {

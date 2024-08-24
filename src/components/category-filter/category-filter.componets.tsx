@@ -4,7 +4,7 @@ import ProductItem from '../product-item/product-item.components'
 import { Products } from './category-filter.styles'
 
 const framerMotionVariants = {
-    hidden: { opacity: 1, scale: 0 },
+    hidden: { opacity: 1, scale: 0.8 },
     visible: {
         opacity: 1,
         scale: 1,
