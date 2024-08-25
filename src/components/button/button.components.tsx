@@ -8,7 +8,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button: React.FC<IButtonProps> = ({ startIcon, children, ...rest }) => {
     return (
-        <CustomButton {...rest}>
+        <CustomButton {...rest} $isOpen>
             {startIcon && <IconButton>{startIcon}</IconButton>}
             {children}
         </CustomButton>

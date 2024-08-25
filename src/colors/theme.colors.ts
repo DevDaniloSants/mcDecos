@@ -14,6 +14,10 @@ const Colors = {
         background: '#222632',
     },
     background: '#0d1010',
+    input: {
+        border: '#31363E',
+        background: '#24282F',
+    },
 }
 
 export default Colors
