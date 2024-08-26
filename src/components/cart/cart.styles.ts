@@ -76,12 +76,15 @@ export const PaymentDetails = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
-    & input {
-        height: 43px;
-        outline: none;
-        border: 1px solid ${Colors.input.border};
-        background-color: ${Colors.input.background};
-        padding: 0.5rem;
+    & label {
+        & input {
+            height: 43px;
+            outline: none;
+            border: 1px solid ${Colors.input.border};
+            background-color: ${Colors.input.background};
+            padding: 0.5rem;
+            border-radius: 6px;
+        }
     }
 `
 
@@ -111,25 +114,6 @@ export const PaymentTypeSelector = styled.div`
         display: flex;
         align-items: center;
         gap: 6px;
-
-        &.disable {
-            & img {
-                filter: grayscale(100%);
-            }
-        }
-
-        & input[type='radio'] {
-            border: 1px solid red;
-            border-radius: 50%;
-
-            &:active {
-                transform: scale(1.2);
-            }
-
-            &:checked {
-                background: red;
-            }
-        }
     }
 `
 
