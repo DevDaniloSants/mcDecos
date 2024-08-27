@@ -1,9 +1,9 @@
 import { MdDone } from 'react-icons/md'
 import { IoIosArrowBack } from 'react-icons/io'
+import { VscError } from 'react-icons/vsc'
 import { useDispatch } from 'react-redux'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import CartForm from '../../types/cartForm.types'
 import { useAppSelector } from '../../hooks/redux.hooks'
 import { selectProductTotalPrice, toggleCart } from '../../store/cart/CartSlice'
 
@@ -18,6 +18,7 @@ import {
     CartEscapeArea,
     CartTitle,
     CloseCartButton,
+    Errors,
     PaymentDetails,
     PaymentTypeSelector,
     Price,
@@ -29,6 +30,7 @@ import {
 import cardImage from '../../assets/card.svg'
 import pixImage from '../../assets/pix.svg'
 import moneyImage from '../../assets/money.svg'
+import CartForm from '../../types/cartForm.types'
 
 const paymentOptions = [
     {
@@ -91,7 +93,9 @@ const Cart = () => {
                         <PaymentDetails>
                             <AddressField>
                                 <label
-                                    className={errors.address && 'input-error'}
+                                    className={
+                                        errors.address ? 'input-error' : ''
+                                    }
                                 >
                                     <span>Endereço</span>
                                     <input
@@ -137,6 +141,33 @@ const Cart = () => {
                                 Finalizar pedido
                             </Button>
                         </Actions>
+                        {errors ? (
+                            <Errors>
+                                {errors?.address?.type === 'required' && (
+                                    <span className="error">
+                                        <VscError />
+                                        <p>O endereço é obrigatório</p>
+                                    </span>
+                                )}
+                                {errors?.address?.type === 'minLength' && (
+                                    <span className="error">
+                                        <VscError />
+                                        <p>
+                                            O endereço precisa ter no mínimo 6
+                                            caracteres
+                                        </p>
+                                    </span>
+                                )}
+                                {errors?.paymentType?.type === 'required' && (
+                                    <span className="error">
+                                        <VscError />
+                                        <p>Escolha o tipo de pagamento</p>
+                                    </span>
+                                )}
+                            </Errors>
+                        ) : (
+                            ''
+                        )}
                     </>
                 ) : (
                     <Products>

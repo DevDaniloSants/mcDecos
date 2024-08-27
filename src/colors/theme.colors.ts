@@ -18,6 +18,9 @@ const Colors = {
         border: '#31363E',
         background: '#24282F',
     },
+    error: {
+        color: '#FD4260',
+    },
 }
 
 export default Colors

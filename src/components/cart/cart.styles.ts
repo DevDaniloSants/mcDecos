@@ -35,7 +35,7 @@ export const CartContent = styled.form`
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 0 1rem;
+    padding: 0.4rem;
     overflow-y: scroll;
 
     @media (max-width: 768px) {
@@ -70,13 +70,23 @@ export const CartTitle = styled.span`
 `
 
 export const PaymentDetails = styled.div`
-    flex: 2;
+    flex: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     & label {
+        &.input-error {
+            & input {
+                border: 1px solid ${Colors.error.color};
+            }
+
+            & img {
+                filter: grayscale(100%);
+            }
+        }
+
         & input {
             height: 43px;
             outline: none;
@@ -121,7 +131,7 @@ export const Actions = styled.div`
     flex: 1;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
 
     & button {
         flex: 1;
@@ -146,4 +156,34 @@ export const PriceTitle = styled.span`
 
 export const TotalPrice = styled.span`
     font-size: clamp(24px, 5vw, 32px);
+`
+
+export const Errors = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    margin-top: 6px;
+
+    gap: 6px;
+
+    & span.error {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid ${Colors.error.color};
+        background-color: ${Colors.error.color};
+        color: ${Colors.text.white};
+        padding: 0.5rem;
+        border-radius: 6px;
+
+        & p {
+            font-size: 14px;
+        }
+
+        & svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
 `
