@@ -75,11 +75,14 @@ const Cart = () => {
         dispatch(toggleCart())
     }
 
-    const handleOrderSubmission: SubmitHandler<CartForm> = (data) => {
+    const handleOrderSubmission: SubmitHandler<CartForm> = async (data) => {
         if (!isOpen) {
             toast.error('O Restaurante está fechado!')
             return
         }
+
+        await toast.success('Pedido realizado com sucesso')
+
         const phone = import.meta.env.VITE_PHONE_MESSAGE
 
         const orderSummary = products

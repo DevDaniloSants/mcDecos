@@ -24,10 +24,13 @@ import {
     IngredientsText,
 } from './product-details.styles'
 import FavoriteButton from '../favoriteButton/favoriteButton.components'
+import isRestaurantOpenHelper from '../../helpers/isRestaurantOpenHelper'
 
 const ProductDetails = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [product, setProduct] = useState<Product | null>(null)
+
+    const isOpen = isRestaurantOpenHelper()
 
     const dispatch = useDispatch()
 
@@ -107,6 +110,7 @@ const ProductDetails = () => {
                         <p>R${product?.price}</p>
                     </div>
                     <Button
+                        isOpen={isOpen}
                         startIcon={<MdOutlineAddShoppingCart />}
                         onClick={handleAddToCart}
                     >
