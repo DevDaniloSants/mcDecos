@@ -3,6 +3,7 @@ import { IoIosArrowBack } from 'react-icons/io'
 import { VscError } from 'react-icons/vsc'
 import { useDispatch } from 'react-redux'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify'
 
 import { useAppSelector } from '../../hooks/redux.hooks'
 import {
@@ -35,6 +36,7 @@ import cardImage from '../../assets/card.svg'
 import pixImage from '../../assets/pix.svg'
 import moneyImage from '../../assets/money.svg'
 import CartForm from '../../types/cartForm.types'
+import isRestaurantOpenHelper from '../../helpers/isRestaurantOpenHelper'
 
 const paymentOptions = [
     {
@@ -58,6 +60,8 @@ const Cart = () => {
     const { isVisible, products } = useAppSelector((state) => state.cartReducer)
     const productTotalPrice = useAppSelector(selectProductTotalPrice)
 
+    const isOpen = isRestaurantOpenHelper()
+
     const {
         register,
         handleSubmit,
@@ -72,6 +76,10 @@ const Cart = () => {
     }
 
     const handleOrderSubmission: SubmitHandler<CartForm> = (data) => {
+        if (!isOpen) {
+            toast.error('O Restaurante está fechado!')
+            return
+        }
         const phone = import.meta.env.VITE_PHONE_MESSAGE
 
         const orderSummary = products
@@ -86,7 +94,7 @@ const Cart = () => {
         resetField('paymentType')
 
         window.open(
-            `https://wa.me/${phone}?text=${message} // Endereço: ${data.address}  Tipo de Pagamento: ${data.paymentType}`,
+            `https://wa.me/${phone}?text=${message} // Endereço: ${data.address}  Tipo de Pagamento: ${data.paymentType} TOTAL: R$${productTotalPrice}`,
             '_blank'
         )
 
@@ -95,6 +103,7 @@ const Cart = () => {
 
     return (
         <CartContainer $isvisible={isVisible}>
+            <ToastContainer theme="dark" />
             <CartEscapeArea onClick={handleEscapeClick} />
             <CartContent onSubmit={handleSubmit(handleOrderSubmission)}>
                 <CloseCartButton onClick={handleEscapeClick}>
@@ -155,7 +164,11 @@ const Cart = () => {
                                 <PriceTitle>Total</PriceTitle>
                                 <TotalPrice>R$ {productTotalPrice}</TotalPrice>
                             </Price>
-                            <Button startIcon={<MdDone />} type="submit">
+                            <Button
+                                startIcon={<MdDone />}
+                                type="submit"
+                                isOpen={isOpen}
+                            >
                                 Finalizar pedido
                             </Button>
                         </Actions>

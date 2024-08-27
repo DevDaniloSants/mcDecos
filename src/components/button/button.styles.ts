@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import Colors from '../../colors/theme.colors'
-import { HomeProps } from '../../pages/home/home.styles'
 
-export const CustomButton = styled.button<HomeProps>`
+export const CustomButton = styled.button<{ $isOpen: boolean }>`
     max-height: 60px;
     display: flex;
     justify-content: center;

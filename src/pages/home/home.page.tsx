@@ -7,9 +7,8 @@ import LogoMcDecos from '../../assets/logo_complet.svg'
 
 import { Container, Content, Logo, Section, Span } from './home.styles'
 
-import { CustomButton } from '../../components/button/button.styles'
-
 import isRestaurantOpenHelper from '../../helpers/isRestaurantOpenHelper'
+import Button from '../../components/button/button.components'
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -36,12 +35,9 @@ const HomePage = () => {
                     </Span>
                 </Section>
 
-                <CustomButton
-                    onClick={() => handleCategoryPage()}
-                    $isOpen={isOpen}
-                >
+                <Button onClick={() => handleCategoryPage()} isOpen={isOpen}>
                     FAÇA O SEU PEDIDO
-                </CustomButton>
+                </Button>
                 <Span className="position_end" $isOpen={isOpen}>
                     <GoHome />
                     Rua Lorem Ipsum - Ipsum Lorem 28 º

@@ -4,11 +4,17 @@ import { CustomButton, IconButton } from './button.styles'
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     startIcon?: ReactNode
+    isOpen: boolean
 }
 
-const Button: React.FC<IButtonProps> = ({ startIcon, children, ...rest }) => {
+const Button: React.FC<IButtonProps> = ({
+    startIcon,
+    children,
+    isOpen,
+    ...rest
+}) => {
     return (
-        <CustomButton {...rest} $isOpen>
+        <CustomButton {...rest} $isOpen={isOpen}>
             {startIcon && <IconButton>{startIcon}</IconButton>}
             {children}
         </CustomButton>
