@@ -5,7 +5,11 @@ import { useDispatch } from 'react-redux'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAppSelector } from '../../hooks/redux.hooks'
-import { selectProductTotalPrice, toggleCart } from '../../store/cart/CartSlice'
+import {
+    clearProducts,
+    selectProductTotalPrice,
+    toggleCart,
+} from '../../store/cart/CartSlice'
 
 import Button from '../button/button.components'
 import CartItem from '../cart-item/cart-item.components'
@@ -61,24 +65,38 @@ const Cart = () => {
         resetField,
     } = useForm<CartForm>()
 
-    console.log(errors)
-
     const dispatch = useDispatch()
 
     const handleEscapeClick = () => {
         dispatch(toggleCart())
     }
 
-    const handleFinish: SubmitHandler<CartForm> = (data) => {
-        console.log(data)
+    const handleOrderSubmission: SubmitHandler<CartForm> = (data) => {
+        const phone = import.meta.env.VITE_PHONE_MESSAGE
+
+        const orderSummary = products
+            .map((item) => {
+                return `${item.displayName} Quantidade: (${item.quantity}) Preço: R$${item.quantity * item.price} | `
+            })
+            .join('')
+
+        const message = encodeURIComponent(orderSummary)
+
         resetField('address')
         resetField('paymentType')
+
+        window.open(
+            `https://wa.me/${phone}?text=${message} // Endereço: ${data.address}  Tipo de Pagamento: ${data.paymentType}`,
+            '_blank'
+        )
+
+        dispatch(clearProducts())
     }
 
     return (
         <CartContainer $isvisible={isVisible}>
             <CartEscapeArea onClick={handleEscapeClick} />
-            <CartContent onSubmit={handleSubmit(handleFinish)}>
+            <CartContent onSubmit={handleSubmit(handleOrderSubmission)}>
                 <CloseCartButton onClick={handleEscapeClick}>
                     <IoIosArrowBack />
                 </CloseCartButton>
@@ -118,7 +136,7 @@ const Cart = () => {
                                     >
                                         <input
                                             type="radio"
-                                            value={option.value}
+                                            value={option.name}
                                             {...register('paymentType', {
                                                 required: true,
                                             })}
@@ -146,7 +164,7 @@ const Cart = () => {
                                 {errors?.address?.type === 'required' && (
                                     <span className="error">
                                         <VscError />
-                                        <p>O endereço é obrigatório</p>
+                                        <p>O endereço é obrigatório.</p>
                                     </span>
                                 )}
                                 {errors?.address?.type === 'minLength' && (
@@ -154,14 +172,14 @@ const Cart = () => {
                                         <VscError />
                                         <p>
                                             O endereço precisa ter no mínimo 6
-                                            caracteres
+                                            caracteres.
                                         </p>
                                     </span>
                                 )}
                                 {errors?.paymentType?.type === 'required' && (
                                     <span className="error">
                                         <VscError />
-                                        <p>Escolha o tipo de pagamento</p>
+                                        <p>Escolha o método de pagamento.</p>
                                     </span>
                                 )}
                             </Errors>

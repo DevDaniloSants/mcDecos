@@ -65,6 +65,9 @@ export const cartSlice = createSlice({
                 )
                 .filter((item) => item.quantity > 0)
         },
+        clearProducts(state) {
+            state.products = []
+        },
     },
 })
 
@@ -86,6 +89,7 @@ export const {
     removeProduct,
     increaseProductQuantity,
     decreaseProductQuantity,
+    clearProducts,
 } = cartSlice.actions
 
 export default cartSlice.reducer
