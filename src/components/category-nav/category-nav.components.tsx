@@ -12,6 +12,8 @@ import { useAppSelector } from '../../hooks/redux.hooks'
 import { useDispatch } from 'react-redux'
 import { setFiltered } from '../../store/category/CategorySlice'
 
+import Allsnacks from '../../assets/all.png'
+
 const CategoryNavigation = () => {
     const [activeCategory, setActiveCategory] = useState('')
 
@@ -37,7 +39,7 @@ const CategoryNavigation = () => {
             id: '0',
             name: '',
             displayName: 'All',
-            imageUrl: 'src/assets/all.png',
+            imageUrl: Allsnacks,
         },
         ...categories,
     ]
