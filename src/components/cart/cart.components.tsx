@@ -97,7 +97,7 @@ const Cart = () => {
         resetField('paymentType')
 
         window.open(
-            `https://wa.me/${phone}?text=${message} // Endereço: ${data.address}  Tipo de Pagamento: ${data.paymentType} TOTAL: R$${productTotalPrice}`,
+            `https://wa.me/${phone}?text=${message} Endereço: ${data.address}  Tipo de Pagamento: ${data.paymentType} TOTAL: R$${productTotalPrice}`,
             '_blank'
         )
 

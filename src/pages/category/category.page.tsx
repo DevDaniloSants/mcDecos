@@ -9,9 +9,10 @@ import CategoryNavigation from '../../components/category-nav/category-nav.compo
 import CategoryFilter from '../../components/category-filter/category-filter.componets'
 import Loading from '../../components/loading/loading.components'
 import CustomBanner from '../../components/customBanner/customBanner.components'
+import { AppDispatch } from '../../store/store'
 
 const CategoryPage = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
 
     const { isLoading } = useAppSelector((state) => state.categoryReducer)
 
